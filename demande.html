@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Publier une demande de service près de chez vous</title>
+<meta name="description" content="Décrivez votre besoin en une minute. Un coup de main de confiance près de chez vous, par des gens vérifiés.">
+<link rel="canonical" href="https://koudmain.app/demande.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Publier une demande de service près de chez vous">
+<meta property="og:description" content="Décrivez votre besoin en une minute, on s'occupe du reste.">
+<meta property="og:url" content="https://koudmain.app/demande.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+.form-wrap{max-width:560px}
+.field{margin-bottom:18px}
+.field label{display:block;font-size:14px;font-weight:600;color:var(--ink);margin-bottom:7px}
+.field input,.field select,.field textarea{width:100%;border:1.5px solid var(--line);border-radius:12px;padding:12px 13px;font-size:16px;font-family:inherit;color:var(--ink);background:var(--surface);outline:none}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--pine)}
+.field textarea{min-height:110px;resize:vertical}
+.field .hint{font-size:12.5px;color:var(--muted);margin-top:6px}
+.submit{width:100%;background:var(--pine);color:#fff;border:none;border-radius:14px;padding:15px;font-size:16px;font-weight:600;cursor:pointer}
+.submit:hover{filter:brightness(1.05)}
+.hp{position:absolute;left:-9999px}
+.reassure{display:flex;gap:10px;align-items:center;background:var(--pine);color:#fff;border-radius:14px;padding:14px 16px;margin-bottom:22px;font-size:13.5px}
+</style>
+</head>
+<body>
+<header class="site">
+<div class="wrap">
+<a class="logo" href="index.html"><span class="mark">k</span><span class="name">koudmain</span></a>
+<nav class="nav">
+<a href="index.html">Le blog</a>
+<a href="guides/service-a-domicile-de-confiance.html">Guides</a>
+<a class="btn" href="/demande.html">Publier une demande</a>
+</nav>
+</div>
+</header>
+
+<main>
+<div class="wrap form-wrap">
+<h1 class="disp" style="font-size:30px;margin:6px 0 10px">Publier une demande</h1>
+<p style="color:var(--muted);font-size:16px;margin:0 0 20px">Décrivez votre besoin en une minute. On vous met en relation avec quelqu'un de confiance près de chez vous.</p>
+
+<div class="reassure"><span>Chaque prestataire a une identité vérifiée. Vous choisissez en confiance.</span></div>
+
+<form name="demande" method="POST" action="/merci.html" data-netlify="true" netlify-honeypot="bot-field">
+<input type="hidden" name="form-name" value="demande">
+<p class="hp"><label>Ne pas remplir : <input name="bot-field"></label></p>
+
+<div class="field">
+<label for="categorie">De quoi avez-vous besoin ?</label>
+<select id="categorie" name="categorie" required>
+<option value="">Choisir une catégorie</option>
+<option>Jardinage</option>
+<option>Bricolage</option>
+<option>Ménage</option>
+<option>Déménagement</option>
+<option>Réparation</option>
+<option>Entretien auto</option>
+<option>Ongles et soins</option>
+<option>Autre</option>
+</select>
+</div>
+
+<div class="field">
+<label for="description">Décrivez votre besoin</label>
+<textarea id="description" name="description" placeholder="Ex : tondre ma pelouse d'environ 80 m², idéalement ce samedi." required></textarea>
+</div>
+
+<div class="field">
+<label for="ville">Votre ville ou secteur</label>
+<input id="ville" name="ville" type="text" placeholder="Ex : Vincennes (94)" required>
+</div>
+
+<div class="field">
+<label for="budget">Budget indicatif (facultatif)</label>
+<input id="budget" name="budget" type="text" placeholder="Ex : 40 €">
+</div>
+
+<div class="field">
+<label for="prenom">Votre prénom</label>
+<input id="prenom" name="prenom" type="text" placeholder="Ex : Camille" required>
+</div>
+
+<div class="field">
+<label for="email">Votre email</label>
+<input id="email" name="email" type="email" placeholder="vous@email.com" required>
+</div>
+
+<div class="field">
+<label for="telephone">Votre téléphone (facultatif)</label>
+<input id="telephone" name="telephone" type="tel" placeholder="06 12 34 56 78">
+<div class="hint">Uniquement pour vous recontacter au sujet de votre demande.</div>
+</div>
+
+<button type="submit" class="submit">Envoyer ma demande</button>
+</form>
+</div>
+</main>
+
+<footer class="site">
+<div class="wrap">
+<div><span class="name" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700">koudmain</span></div>
+<div class="muted">Le service près de chez vous, par des gens vérifiés.</div>
+</div>
+</footer>
+</body>
+</html>
