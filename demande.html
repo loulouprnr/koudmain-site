@@ -48,7 +48,7 @@
 
 <div class="reassure"><span>Chaque prestataire a une identité vérifiée. Vous choisissez en confiance.</span></div>
 
-<form name="demande" method="POST" action="/merci.html" data-netlify="true" netlify-honeypot="bot-field">
+<form id="demandeForm" name="demande" method="POST" action="/merci.html" data-netlify="true" netlify-honeypot="bot-field">
 <input type="hidden" name="form-name" value="demande">
 <p class="hp"><label>Ne pas remplir : <input name="bot-field"></label></p>
 
@@ -109,5 +109,25 @@
 <div class="muted">Le service près de chez vous, par des gens vérifiés.</div>
 </div>
 </footer>
+<script>
+const SUPABASE_URL = "https://ymbxmfgqzuewdhsrrbsn.supabase.co";
+const SUPABASE_KEY = "sb_publishable_Pkk9pCdw4UJhiBHwoPYCZQ_VsHzaiqT";
+const kdForm = document.getElementById("demandeForm");
+kdForm.addEventListener("submit", async function (e) {
+  e.preventDefault();
+  const btn = kdForm.querySelector("button[type=submit]");
+  if (btn) { btn.disabled = true; btn.textContent = "Envoi en cours..."; }
+  const d = Object.fromEntries(new FormData(kdForm).entries());
+  const demande = { categorie: d.categorie || null, description: d.description || null, ville: d.ville || null, budget: d.budget || null, prenom: d.prenom || null, email: d.email || null, telephone: d.telephone || null, source: "site" };
+  try {
+    await fetch(SUPABASE_URL + "/rest/v1/demandes", { method: "POST", headers: { "apikey": SUPABASE_KEY, "Content-Type": "application/json", "Prefer": "return=minimal" }, body: JSON.stringify(demande) });
+  } catch (err) {}
+  try {
+    const enc = new URLSearchParams(new FormData(kdForm)).toString();
+    await fetch("/", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: enc });
+  } catch (err) {}
+  window.location.href = "/merci.html";
+});
+</script>
 </body>
 </html>
